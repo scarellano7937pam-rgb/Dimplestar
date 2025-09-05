@@ -1,29 +1,32 @@
+<?php
+include "config.php";
+
+$sql = "SELECT content FROM about_content WHERE id = 1 LIMIT 1";
+$result = $conn->query($sql);
+$row = $result->fetch_assoc();
+$content = $row['content'] ?? "No content found.";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dimplestar - About Us</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>About Us</title>
+<script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body>
 
-  <?php include("php_includes/navbar.php"); ?>
+<?php include("php_includes/navbar.php"); ?>
 
-  <main class="container mx-auto px-6 pt-28">
-    <h1 class="text-4xl font-bold text-blue-600 mb-6">About Us</h1>
-    <div class="bg-white p-6 rounded-lg shadow-md">
-      <p class="mb-4">
-        Dimplestar Bus Services has been providing safe, reliable, and comfortable transportation for decades. 
-        Our mission is to connect people to their destinations with convenience and care.
-      </p>
-      <p>
-        With modern buses, experienced drivers, and dedicated staff, we ensure every journey is smooth and enjoyable.
-      </p>
-    </div>
-  </main>
+<main class="container mx-auto px-6 pt-28">
+  <h1 class="text-4xl font-bold text-blue-600 mb-6">About Us</h1>
+  <div class="prose max-w-none">
+    <?= $content ?>
+  </div>
+</main>
 
-  <?php include("php_includes/footer.php"); ?>
+<?php include("php_includes/footer.php"); ?>
 
 </body>
 </html>

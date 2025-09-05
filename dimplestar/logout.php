@@ -1,7 +1,7 @@
 <?php
-	session_start();
- 	$_SESSION = array();
-    session_destroy();
-	
-	header("location: signlog.php");
+session_start();
+session_unset();
+session_destroy();
+header("Location: login.php");
+exit();
 ?>
